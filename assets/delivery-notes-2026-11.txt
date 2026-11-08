@@ -1,0 +1,13 @@
+CONTOSO ORDEROPS - SYNTHETISCHE LIEFERHINWEISE
+Dokument: delivery-notes-2026-11.txt
+Dokument-ID: DELIVERY-DEMO-2026-11
+Stand: 2026-11-04.
+
+Es existieren in diesem Workshop keine dokumentierten Liefertermine.
+Es gibt keine Lieferanten-SLA, keine zugesagte Lieferzeit und keine Rabattregel.
+Der Bestandssnapshot ist keine Reservierung oder Bestaetigung eines Lieferdatums.
+Eine Empfehlung fuer ein verfuegbares Produkt garantiert keine Lieferung morgen.
+
+Eine Anfrage nach einem konkreten Termin ist als offene Frage zu markieren.
+Keine realen Lieferanten oder Kundensysteme sind angebunden.
+Auch eine menschliche Chatbestaetigung erzeugt hier keine Bestellung.

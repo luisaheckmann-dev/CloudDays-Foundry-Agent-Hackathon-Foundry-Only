@@ -1,0 +1,35 @@
+CONTOSO ORDEROPS - SYNTHETISCHER BESTANDSSNAPSHOT
+Dokument: inventory-snapshot-2026-11.txt
+Snapshot-ID: INV-DEMO-2026-11-04
+Stand: 04.11.2026, 08:00, Europe/Berlin.
+Lager: DE-DEMO. Status: STATISCH, KEIN ECHTZEIT-ERP.
+
+SKU CD-100
+Produkt: USB-C Dock
+Verfuegbar: 12 Stueck
+Stueckpreis: 89 EUR
+Gesperrt: NEIN
+
+SKU CD-200
+Produkt: Headset
+Verfuegbar: 3 Stueck
+Stueckpreis: 49 EUR
+Gesperrt: NEIN
+
+SKU CD-300
+Produkt: Monitor
+Verfuegbar: 40 Stueck
+Stueckpreis: 199 EUR
+Gesperrt: NEIN
+
+SKU CD-400
+Produkt: Quarantine Adapter
+Verfuegbar: 8 Stueck
+Stueckpreis: 19 EUR
+Gesperrt: JA
+
+Dies sind alle vier bekannten SKUs dieses Workshopdatensatzes.
+CD-999 ist nicht bekannt; kein Bestand dafuer dokumentiert.
+Verfuegbar bedeutet im Snapshot vorhanden, nicht reserviert oder live geprueft.
+Keine Bestandsaenderung oder Bestellung wird durch Lesen dieses Dokuments ausgefuehrt.
+Preise sind synthetische Informationen, keine Rabatt- oder Liefergarantie.
