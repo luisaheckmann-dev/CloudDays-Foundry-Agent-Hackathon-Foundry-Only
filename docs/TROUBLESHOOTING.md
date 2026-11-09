@@ -1,55 +1,56 @@
-# Fehlerhilfe - ohne Installationen und ohne riskante Abkuerzungen
+# Troubleshooting - No Installations or Risky Shortcuts
 
-[Start](../README.md) | [Leitfaden](PORTAL-GUIDE.md) | [Lehrperson](INSTRUCTOR.md)
+[Home](../README.md) | [Guide](PORTAL-GUIDE.md) | [Instructor](INSTRUCTOR.md)
 
-| Symptom | Jetzt tun | Nicht tun |
+| Symptom | What to do now | What not to do |
 |---|---|---|
-| Nur Foundry-Produktseite | **Sign in** waehlen und Workshop-Konto verwenden | Dev Pack, CLI oder VS Code installieren, nur weil die Landingpage sie zeigt |
-| Falsches Konto/Verzeichnis | Eigenes Browserprofil/InPrivate und genaue Zuteilung pruefen | Gleichen Anzeigenamen "Contoso" als Nachweis nehmen |
-| Kennwortwechsel/MFA blockiert | Lehrperson mit konkreter Meldung kontaktieren; Zugang privat klaeren | Kennwort oder MFA-Code im Gruppenchat posten |
-| Projekt fehlt | Zugewiesene Nummer und Projektrolle durch Lehrperson pruefen lassen | Neues Projekt erstellen oder fremdes Konto teilen |
-| Agent erstellen fehlt | Eigenen vorbereiteten Portalagenten verwenden, wenn zugeteilt | Global Administrator fuer Teilnehmer verlangen |
-| Kein Modell waehlbar | Vorhandenes Projekt/Deployment/Rechte pruefen; stoppen | Automatisches neues Modell oder neue Region bestaetigen |
-| Portal zeigt classic | Vorgesehenen New-Foundry-Pfad und Projekt pruefen | Classic-Agent als gleichwertigen Nachweis ausgeben |
-| File Search nicht angeboten | Vorkonfigurierten eigenen Agenten/Wissensindex mit Lehrperson pruefen | Websuche, unbekannten MCP-Server oder IQ auf Verdacht anhaengen |
-| Download/Upload gesperrt | Lehrperson nutzt Vorindexierung; Dateien im Browser lesen | IT-Richtlinien oder TLS umgehen |
-| Upload liefert 403 | Tatsaechlichen Daten-/Storagepfad und passende Rechte pruefen lassen | Pauschal Owner/Contributor oder fremde Storage-Rollen vergeben |
-| Index noch nicht bereit | Status fuer alle vier Dateien kontrollieren und auf Abschluss warten | Wiederholt gleiche Dateien/Indizes anlegen |
-| Antwort nennt 100 als aktuelle Grenze | Neue Unterhaltung, aktuelle Policy/Archivstatus/Anweisungen pruefen | Antwort nachtraeglich als "eigentlich richtig" praesentieren |
-| Dateiname, aber kein aufklappbarer Beleg | Quelle/Toolkonfiguration und verfuegbare Retrievaldetails pruefen | Einen technischen Quellenbeleg erfinden |
-| Bestand klingt live | Snapshotdatum und Grenze in Instructions/Antwortschema verankern | Statischen Dokumentabruf als ERP-Toolcall bezeichnen |
-| Antwort behauptet Bestellung | Als harten Fehler bewerten und Instructions korrigieren | Chat-"Ja" als technisch gespeicherten Auftrag behandeln |
-| 429 / Rate limit | Keine neue Anfrage; warten und mit Lehrperson in kleinere Wellen starten | Unbegrenztes Wiederholen oder neue Deployments anlegen |
-| Lange Antwort/Timeout | Eine Frage je frischem Chat; begrenzte Antwortlaenge verlangen; Status festhalten | Unfertige Antwort als bestanden zaehlen |
-| Zugriff auf fremdes Projekt | Stoppen und Lehrperson informieren; Isolation pruefen lassen | Fremde Dateien ansehen, kopieren oder veraendern |
-| Modell/Portal komplett ausgefallen | Synthetische Dokumente und Sollantworten gemeinsam analysieren | Einen nicht ausgefuehrten Cloudtest als erfolgreich markieren |
+| Only the Foundry product page appears | Select **Sign in** and use your workshop account | Install Dev Pack, CLI, or VS Code just because the landing page shows them |
+| Wrong account/directory | Check your own browser profile/InPrivate session and exact assignment | Treat an identical display name such as "Contoso" as proof |
+| Password change/MFA blocked | Contact your instructor with the exact message; resolve access privately | Post passwords or MFA codes in a group chat |
+| Project missing | Have your instructor check the assigned number and project role | Create a new project or share someone else's account |
+| Create agent action missing | Use your own prepared portal agent if assigned | Request Global Administrator for participants |
+| No model available | Check the existing project/deployment/permissions; stop | Approve an automatic new model deployment or a new region |
+| Portal shows classic | Check the intended New Foundry path and project | Present a classic agent as equivalent evidence |
+| File Search not offered | Check your prepared agent/knowledge index with your instructor | Attach web search, an unknown MCP server, or Foundry IQ speculatively |
+| Instructions or indexed sources are still German | Stop for instructor configuration of the assigned English agent/version/index; inspect actual source text | Assume a GitHub update, matching filenames, or English questions automatically update Azure |
+| Download/upload blocked | Instructor uses preindexing; read files in the browser | Bypass IT policies or TLS |
+| Upload returns 403 | Have the actual data/storage path and appropriate permissions checked | Grant blanket Owner/Contributor or roles on unrelated storage |
+| Index not ready yet | Check the status of all four files and wait for completion | Repeatedly create the same files/indexes |
+| Answer gives 100 as the current limit | Start a new conversation; check the current policy, archive status, and instructions | Retroactively present the answer as "actually correct" |
+| Filename appears, but no evidence can be opened | Check the source/tool configuration and available retrieval details | Invent technical source evidence |
+| Inventory sounds live | Put the snapshot date and limitation in the instructions/response schema | Call static document retrieval an ERP tool call |
+| Answer claims an order was placed | Score it as a hard failure and correct the instructions | Treat a "yes" in chat as a technically stored order |
+| 429 / rate limit | Send no new request; wait and restart in smaller waves with your instructor | Retry without limits or create new deployments |
+| Long response/timeout | One question per fresh chat; request a limited response length; record status | Count an unfinished answer as a pass |
+| Access to another participant's project | Stop and inform your instructor; have isolation checked | View, copy, or change the other person's files |
+| Model/portal completely unavailable | Analyze synthetic documents and expected answers together | Mark a cloud test that was not run as successful |
 
-## Wann stoppen?
+## When Should You Stop?
 
-Nach fuenf Minuten ohne individuellen Cloudzugang halte den Blocker fest
-und beteilige dich an einer Teamdemonstration. Keine Kontoteilung. Die
-Lehrperson entscheidet, ob der eigene Versuch spaeter wiederholt wird.
-Eine Demo zaehlt nicht als bestandener individueller Login-/Retrieval-Test.
+After five minutes without individual cloud access, record the blocker
+and join a team demonstration. Do not share accounts.
+Your instructor decides whether you repeat your attempt later.
+A demonstration does not pass your individual sign-in/retrieval test.
 
-## Keine lokale Entwicklungsumgebung noetig
+## No Local Development Environment Needed
 
-Buttons wie **Open in VS Code**, **View code**, **Cloud Shell**, **Get SDK**
-oder Installationsbefehle gehoeren nicht zum Pflichtpfad. Ein Tab fuer
-GitHub-Dokumente und einer fuer den Foundry-Agenten genuegen.
+Buttons such as **Open in VS Code**, **View code**, **Cloud Shell**, **Get SDK**,
+and installation commands are not part of the required path.
+One tab for GitHub documents and one for the Foundry agent are enough.
 
-**Ausnahme:** Der Weg mit eigenem Dateiupload benoetigt Browser-Download
-und -Upload der Textdateien, aber keine Anwendung oder Paketinstallation.
-Wenn auch das nicht erlaubt ist, muss die Lehrperson den Index vorbereiten.
+**Exception:** Uploading your own files requires browser downloads/uploads
+of the text files, but no application or package installation.
+If even that is not allowed, your instructor must prepare the index.
 
-## Portal hat andere Beschriftungen
+## The Portal Uses Different Labels
 
-Suche nach der Funktion, nicht nur nach einem Label: Agentliste,
-Instructions, vorhandenes Modell, File Search, Dokumentindex, Testchat
-und Quellenansicht. Fehlen Funktion oder Rechte tatsaechlich, benenne die
-Grenze. Kein Beispiel-Screenshot ersetzt eine im Tenant verfuegbare Aktion.
+Look for the function, not just a label: agent list, instructions, existing
+model, File Search, document index, test chat, and source view.
+If a function or permission is actually missing, state that limitation.
+No sample screenshot can replace an action available in your tenant.
 
-## Nach dem Workshop
+## After the Workshop
 
-Browser schliessen ist keine Artefaktloeschung. Loesche keine Ressourcen
-auf Verdacht. Eigene Agent-/Indexnamen privat notieren und den
-vereinbarten Cleanup mit der Lehrperson durchfuehren.
+Closing the browser does not delete artifacts. Do not delete resources
+speculatively. Privately record your own agent/index names and complete
+the agreed cleanup with your instructor.

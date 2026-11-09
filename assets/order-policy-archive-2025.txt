@@ -1,14 +1,14 @@
-CONTOSO ORDEROPS - SYNTHETISCHES ARCHIV, NICHT AKTUELL
-Dokument: order-policy-archive-2025.txt
+CONTOSO ORDEROPS - SYNTHETIC ARCHIVE, NOT CURRENT
+Document: order-policy-archive-2025.txt
 Policy-ID: OPS-ARCHIVE-2025-01
-Urspruenglich gueltig ab: 2025-01-01.
-Status: ZURUECKGEZOGEN. NICHT ANWENDEN.
-Ersetzt durch OPS-PORTAL-2026-11 ab 2026-11-01.
+Originally effective: 2025-01-01.
+Status: WITHDRAWN. DO NOT APPLY.
+Replaced by OPS-PORTAL-2026-11 effective 2026-11-01.
 
-Historische, hier ausdruecklich ungueltige Mengenregel:
-Die damalige Obergrenze war 100 Stueck pro Vorgang.
+Historical quantity rule, explicitly invalid in this workshop:
+The previous upper limit was 100 units per operation.
 
-Dieses Dokument dient nur dem Konflikttest.
-Die Zahl 100 darf nicht als aktuelle Bestell-/Empfehlungsgrenze verwendet werden.
-Eine passende Suchstelle in einem Archiv ist noch keine gueltige Regel.
-Keine Geschaeftsaktion darf aus dieser Archivdatei abgeleitet werden.
+This document is only for testing conflicting sources.
+Do not use 100 as the current order/recommendation limit.
+A relevant search result in an archive does not make the rule valid.
+No business action may be derived from this archived file.

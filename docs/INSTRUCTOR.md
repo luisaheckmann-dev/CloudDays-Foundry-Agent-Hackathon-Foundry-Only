@@ -1,195 +1,248 @@
-# Runbook fuer die Lehrperson
+# Instructor Runbook
 
-[Start](../README.md) | [Agenda](AGENDA.md) | [Teilnehmerpfad](PORTAL-GUIDE.md)
+[Home](../README.md) | [Agenda](AGENDA.md) | [Participant path](PORTAL-GUIDE.md)
 
-## Architektur und Freigabeumfang
+## Architecture and Authorized Scope
 
-Dieser Track verwendet Prompt Agents und File Search im neuen Foundry.
-Er fuehrt keine eigenen Python-Funktionen aus. Die Policy wurde deshalb
-als **OPS-PORTAL-2026-11** angepasst: Empfehlungen statt lokaler
-Bestellentwuerfe mit CLI-Freigabe. Die Original-Policy und ihr Ausfuehrungs-
-versprechen nicht ungeaendert in diesen Track uebernehmen.
+This track uses prompt agents and File Search in the new Foundry.
+It does not execute custom Python functions. The policy has therefore
+been adapted as **OPS-PORTAL-2026-11**: recommendations instead of local
+order drafts with CLI approval. Do not copy the original policy and its
+execution promises unchanged into this track.
 
-Vorhandene, bereits freigegebene Foundry-Ressource, Modell und Projekte
-koennen genutzt werden. Neue Portalagenten erhalten eigene Namen wie
-`orderops-p01-portal`; vorhandene SDK-Agenten und ihre Indizes bleiben
-unangetastet. Vorindexierung und Agentanlage sind Azure-Schreibzugriffe
-und benoetigen einen expliziten Scope-/Kostenentscheid.
+You can use an existing, approved Foundry resource, model, and projects.
+New portal agents receive their own names, such as `orderops-p01-portal`;
+existing SDK agents and their indexes remain untouched. Preindexing and
+agent creation are Azure writes and require an explicit scope/cost decision.
 
-Dieses Repository ist nur das Materialpaket. Es vergibt keine Rollen,
-erstellt keine Konten und deployed keine Ressourcen automatisch.
+This repository is only the materials package. It does not assign roles,
+create accounts, or deploy resources automatically.
 
-## Vor dem Event vorbereiten
+## Prepare the English Delivery Separately
 
-1. Lege den privaten Betriebszettel fest: Tenant, Kontozuordnung,
-   Projektnummern, Modell-Deploymentname und Supportkontakt. Diese Werte
-   werden nicht in dieses oeffentliche Repository geschrieben.
-2. Eine native Workshopidentitaet pro Person verwenden. Firmen-Mailadressen
-   sind dafuer technisch nicht erforderlich. Die Kontonummer kann erst
-   bei Ankunft einer Person zugeteilt werden.
-3. Stelle der Person ihr eigenes initiales Kennwort sicher bereit.
-   Ein Windows-verschluesselter Credential-Export der Lehrperson ist kein
-   Teilnehmerdownload und auf anderen Rechnern nicht einfach entschluesselbar.
-4. Ersten Login, Kennwortwechsel und gegebenenfalls MFA rechtzeitig pruefen.
-   Fuer ein Testkonto keine eigene MFA an einen spaeter fremd zugeteilten
-   Account binden, ohne vor Uebergabe einen geregelten Reset vorzunehmen.
-5. Pruefe **Foundry User am zugeordneten Projekt**. Native Konten allein
-   reichen nicht. Entra User Administrator fuer Kontenverwaltung ist eine
-   andere Berechtigung als Azure-Projekt-RBAC und nicht Teilnehmerstandard.
-6. Pruefe Portalnavigation und Deploymentzugriff mit eingeschraenktem Konto.
-   Falls gezielte Leserechte fuer Navigation benoetigt werden, Scope und
-   Folgen gesondert bewerten. Nicht pauschal Owner/Contributor auf der
-   Subscription oder Foundry User auf der gesamten Ressource vergeben.
-7. Nutze das freigegebene vorhandene Modell, z. B. `orderops-model`.
-   Modell- und Regionsunterstuetzung fuer File Search separat kontrollieren.
-   Keine automatische Bereitstellung eines anderen Modells akzeptieren.
-8. Pruefe Unternehmensnetz: Anmeldung, `ai.azure.com`, Modell-/Agentzugriff
-   und GitHub sind erreichbar. Datei-Download, Upload und Zwischenablage
-   koennen separat gesperrt sein. Browser-only hebt IT-Richtlinien nicht auf.
-9. Plane die Wissensvorbereitung nach einem der beiden folgenden Wege.
+**Changing GitHub content does not update pre-provisioned Azure agents or
+indexed files.** A previously prepared workshop setup may still use the
+**previous German edition**. This translation changes no accounts, project
+roles, agents, or indexed content. The source filenames and policy ID may
+match this edition while the actual indexed passages and agent instructions
+are still German.
 
-## Weg A: Teilnehmer laden Dateien im Portal
+Before English delivery, separately review and authorize this configuration
+work. These are instructor setup instructions, not provisioning automation:
 
-Nur verwenden, wenn der aktuelle Portal-Rollout und die Teilnehmerrechte
-den gesamten Upload-/Index-/Anhaengepfad erlauben. Vorher mit einem echten
-Teilnehmeraccount testen. Alle vier Core-Dateien sind kleine UTF-8-Texte.
+1. Retain the approved model, including its deployment identifier
+   `orderops-model`, existing projects, and existing permission scopes.
+   Translating materials is not authorization to expand access.
+2. Select the English starter/reference instructions and the four English
+   core files in this repository. Do not include the optional attack note
+   in the core corpus.
+3. Prefer a dedicated new index in each assigned project, for example
+   `orderops-p01-knowledge-en`. Wait for all four files to finish indexing.
+   Do not automatically delete, replace, or overwrite existing German indexes.
+4. Configure explicitly identified English agent versions and connect the
+   intended English index. Preserve existing German versions and original
+   SDK agents; document the exact English agent/version/index assignment
+   privately for each participant.
+5. Use a reserved restricted participant account to test the portal path,
+   actual English source passages, and English responses. Matching filenames,
+   policy IDs, an administrator chat, or a completed German SDK source probe
+   do not establish English participant readiness.
+6. Require every participant to sign in and test their own assigned project.
+   If instructions still require German or retrieved passages are German,
+   stop for instructor configuration instead of claiming the English track
+   is ready. A German-source agent may process English questions in principle,
+   but an unchanged German seed is not completed English preparation.
 
-Die offiziellen File-Search-Voraussetzungen nennen Storage Blob Data
-Contributor fuer Uploads in den eigenen Projektstorage. Das konkrete
-Basic-/Managed-Storage-Setup kann sich davon unterscheiden. Keine fremde
-Storage-Ressource auf Verdacht freigeben; den tatsaechlichen Pfad pruefen.
+If you preload the verified English index, participants do not need file
+uploads. Optional participant uploads still require pretested roles and
+browser permissions. No model change or permission expansion is implied.
+Until the English restricted-participant acceptance checks have actually
+been performed, keep their evidence status `NOT_RUN`.
 
-Dieser Weg benoetigt keine lokale Installation, aber Browserdatei-Download
-und Browserupload. Ein `.py`-Upload waere nur Dokumentinhalt, kein Codehosting.
+## Prepare Before the Event
 
-## Weg B: Lehrperson bereitet Wissen vor
+1. Define the private operations sheet: tenant, account assignments,
+   project numbers, model deployment name, and support contact. Do not
+   write these values into this public repository.
+2. Use one native workshop identity per person as the main access path.
+   Neither work nor personal email addresses need to be collected to
+   allocate these accounts. You can assign an account number on arrival.
+   A real B2B guest path requires separate preparation and testing; it is
+   not the default path here.
+3. Securely provide each person with their own initial password.
+   An instructor's Windows-encrypted credential export is not a participant
+   download and cannot simply be decrypted on other computers.
+4. Check first sign-in, password change, and MFA if required well in advance.
+   Do not bind your own MFA to a test account that will later be assigned
+   to someone else without a controlled reset before handoff.
+5. Verify **Foundry User scoped to the assigned project**. Native accounts
+   alone are not enough. Entra User Administrator for account management
+   is a different permission from Azure project RBAC and is not a standard
+   participant role.
+6. Check portal navigation and deployment access with a restricted account.
+   If targeted read permissions are needed for navigation, assess their
+   scope and effects separately. Do not grant blanket subscription
+   Owner/Contributor or resource-wide Foundry User.
+7. Use the approved existing model, for example `orderops-model`.
+   Check model and region support for File Search separately.
+   Do not accept automatic deployment of another model.
+8. Check the corporate network: sign-in, `ai.azure.com`, model/agent access,
+   and GitHub must be reachable. File downloads, uploads, and the clipboard
+   may be blocked separately. Browser-only does not override IT policies.
+9. Plan knowledge preparation using one of the following two paths,
+   applying the English configuration and verification steps above.
 
-**Empfohlen fuer restriktive Kundengeraete.**
+## Path A: Participants Upload Files in the Portal
 
-1. Oeffne jedes vorhandene Teilnehmerprojekt mit berechtigtem Konto.
-2. Erzeuge einen eindeutig diesem Track zugeordneten Dokumentindex, z. B.
-   `orderops-p01-knowledge`, und lade die vier Core-Dateien aus `assets/` hoch.
-3. Warte auf vollstaendige Indexierung aller vier Dateien.
-   Pruefe die Ablauffrist des Indexes und seine Bereitschaft kurz vor dem
-   Event erneut. Ein frueherer erfolgreicher Upload ist keine Garantie,
-   dass der Index am Workshoptag noch verfuegbar ist.
-4. Konfiguriere File Search mit genau diesem Index. Nur Quellen desselben
-   zugeordneten Projekts verwenden. Keine tenantweiten Freigaben voraussetzen.
-5. Wenn Teilnehmer im Portal vorhandene Indizes auswaehlen koennen, lass
-   sie in Lab 1 ihren eigenen Agenten erstellen und in Lab 2 verbinden.
-6. Wenn das Portal die Anhaengeaktion nicht bietet, lege einen **separaten**
-   Portalagenten mit Starter-Instructions und vorbereitetem File Search an.
-   Die Teilnehmer bearbeiten diesen Agenten im eigenen Projekt.
-7. Fuer Lab 1/File-Search-Baseline kann die Lehrperson einen zweiten
-   ungrounded Agenten vorkonfigurieren. Den Coreindex dafuer nicht loeschen.
-   Ist weder eigener Agentbau noch Zugriff auf vorbereitete Agenten
-   moeglich, ist die individuelle Portalabnahme blockiert.
-8. Optional die Agentanlage durch die Lehrperson automatisieren; das ist
-   kein Teilnehmerbedarf und kein Bestandteil dieses Repositorypakets.
-   Ein SDK-erstellter Prompt Agent muss im aktuellen Portal editierbar und
-   testbar sein, bevor er als Vorbereitungsweg eingesetzt wird.
-9. Pruefe das Ergebnis mit dem echten eingeschraenkten Teilnehmerkonto,
-   nicht nur mit Instructor-/Adminrechten.
+Use this only if the current portal rollout and participant permissions
+allow the full upload/index/attach path. Test it first with a real
+participant account. All four core files are small UTF-8 text files.
 
-## Freigabecheck vor dem Workshop
+The official File Search prerequisites list Storage Blob Data Contributor
+for uploads to the project's own storage. The actual basic/managed-storage
+setup may differ. Do not grant access to an unrelated storage resource
+speculatively; check the actual data path.
 
-Nutze zunaechst ein eindeutig reserviertes Testkonto und danach eine
-Anmelde-/Zugangspruefung fuer jede Zuteilung.
+This path needs browser file downloads and uploads, but no local
+installation. Uploading a `.py` file would only add document content,
+not host executable code.
 
-| Pruefung | Muss-Ergebnis |
+## Path B: Instructor Prepares Knowledge
+
+**Recommended for restrictive customer devices.**
+
+1. Open each existing participant project with an authorized account.
+2. Create a document index clearly associated with this English track,
+   for example `orderops-p01-knowledge-en`, and upload the four English
+   core files from `assets/`. Do not replace an existing German index.
+3. Wait until all four files are fully indexed.
+   Check the index expiration and readiness again shortly before the event.
+   A previously successful upload does not guarantee that the index will
+   still be available on the workshop day.
+4. Configure File Search with exactly this index. Use only sources in
+   the same assigned project. Do not assume tenant-wide access.
+5. If participants can select existing indexes in the portal, have them
+   create their own agent in Lab 1 and connect it in Lab 2.
+6. If the portal does not offer the attach action, create a **separate**
+   portal agent/version with English starter instructions and prepared
+   File Search. Participants edit that agent in their own project.
+7. For the Lab 1 baseline without File Search, you can preconfigure a
+   second ungrounded English agent. Do not delete the core index for this.
+   If neither individual agent creation nor access to prepared agents
+   works, individual portal acceptance is blocked.
+8. Any optional instructor-side automation of agent creation is separate
+   from participant requirements and outside this repository package.
+   Before using an SDK-created prompt agent as a preparation path, verify
+   that it can be edited and tested in the current portal.
+9. Verify the result using the actual restricted participant account,
+   not just instructor/administrator permissions. Check actual English
+   source text and response language, not only the file list.
+
+## Pre-Workshop Acceptance Check
+
+Start with a clearly reserved test account, then perform a sign-in/access
+check for every assignment. Each participant must test their own project.
+
+| Check | Required result |
 |---|---|
-| Konto und Verzeichnis | Genau die zugeteilte native Workshopidentitaet |
-| Erstlogin | Kennwortwechsel/MFA moeglich, kein unerledigter Kontoblocker |
-| Projekt | Eigenes vorhandenes Projekt erreichbar |
-| Agent | Erstellen oder vorbereiteten eigenen Portalagenten bearbeiten |
-| Modell | Vorhandenes Deployment nutzbar; keine neue Bereitstellung |
-| Vier Core-Dateien | Vollstaendig indexiert und dem Agenten zugeordnet |
-| E01 | Richtige aktuelle Grenze und passende aufklappbare Quelle |
-| E03/E06/E07 | Bestand, Sperre und aktuelle Policy korrekt eingeordnet |
-| E05/E09 | Keine behauptete Bestellung und keine Liefergarantie |
-| Isolation | Kein Zugriff auf Agenten/Dateien eines fremden Teilnehmerprojekts |
-| Sicherheit | Keine aktive Websuche oder unbekannten Tools |
-| Konfiguration | Eigene Portalagenten, Original-SDK-Agenten unveraendert |
-| Kosten | Freigegebenes Deployment, Kontingent und Beobachtung eingerichtet |
+| Account and directory | Exactly the assigned native workshop identity |
+| First sign-in | Password change/MFA works; no unresolved account blocker |
+| Project | Participant's own existing project is accessible |
+| Agent | Create or edit their own prepared English portal agent/version |
+| Model | Existing deployment is usable; no new deployment |
+| Four core files | Fully indexed in English and attached to the agent |
+| English readiness | Actual English source passages and English responses verified with restricted participant access |
+| E01 | Correct current limit and relevant source that can be opened |
+| E03/E06/E07 | Correct treatment of inventory, blocking, and current policy |
+| E05/E09 | No claim of an executed order or guaranteed delivery |
+| Isolation | No access to agents/files in another participant's project |
+| Safety | No active web search or unknown tools |
+| Configuration | Separate portal agents/versions; original SDK agents and German indexes/versions unchanged |
+| Costs | Approved deployment, quota, and monitoring in place |
 
-**Status hier bewusst: Teilnehmer-Liveabnahme NOT_RUN.** Nach eigener
-Durchfuehrung privat Konto, Zeitpunkt, Agentstand, Resultat und Blocker
-festhalten. Dieses Materialpaket behauptet keinen erfolgreichen Kundenlauf.
+**Deliberate status here: English participant live acceptance `NOT_RUN`.**
+After actually performing it, privately record the account, time, agent
+version, result, and blockers. This materials package does not claim
+a successful customer run.
 
-Wenn die Quellenmarkierung nur einen Dateinamen zeigt, aber kein Treffer
-aufklappbar ist, pruefe verfuegbare Retrieval-/Traceinformationen. Fehlt
-jeder technische Beleg, ist der Quellencheckpoint nicht bestanden.
+If the citation marker shows only a filename and no result can be opened,
+check available retrieval/trace information. If there is no technical
+evidence at all, the source checkpoint has not been passed.
 
-## Durchfuehrung ohne Installationen
+## Run the Workshop Without Installations
 
-Teile pro Person privat Login, Startkennwort, Projektnummer und die
-vorbereitete Agent-/Wissensbasis-Zuordnung aus. Keine Geheimnisse auf Folien,
-GitHub oder im Gruppenchat. Teilnehmer brauchen keine `.env` und keine Keys.
+Privately give each person their sign-in details, initial password, project
+number, and prepared English agent/version/knowledge-base assignment.
+No secrets on slides, GitHub, or in a group chat.
+Participants do not need an `.env` file or keys.
 
-Starte Testfragen in Wellen, z. B. zehn Teilnehmer nacheinander statt alle
-30 gleichzeitig. Jeder wartet auf den Abschluss einer Antwort. Diese
-Wellen sind eine organisatorische Startstrategie, keine garantierte
-Quota- oder Kapazitaetsberechnung. Tatsaechliche TPM/RPM und 429 beobachten.
+Start test questions in waves, for example ten participants at a time
+rather than all 30 at once. Everyone waits for a response to finish.
+These waves are an organizational starting strategy, not a guaranteed
+quota or capacity calculation. Monitor actual TPM/RPM and 429 responses.
 
-Automatische Playground-Evaluatoren koennen standardmaessig aktiviert und
-kostenpflichtig sein. Wenn im Portal Metriken/Evaluatoren angeboten werden,
-fuer den Pflichtpfad alle automatischen Evaluatoren abwaehlen. Die Rubrik
-ist manuell. Kein Application Insights, Search-Service, Remote-Backend,
-Hosted Compute oder Code Interpreter ist Pflichtneuaufbau dieses Tracks.
+Automated Playground evaluators may be enabled by default and incur costs.
+If the portal offers metrics/evaluators, deselect all automated evaluators
+for the required path. The rubric is manual. This track does not require
+new Application Insights, a Search service, remote backend, hosted compute,
+or Code Interpreter.
 
-Die Demo zeigt drei Kontraste: keine Quellen vs. Retrieval, Archiv vs.
-aktuelle Policy und Empfehlung vs. behauptete Bestellung. Zahlen aus dem
-Snapshot nicht als "gerade im ERP abgefragt" praesentieren.
+The demo shows three contrasts: no sources vs. retrieval, archive vs.
+current policy, and recommendation vs. a claimed order.
+Do not present snapshot figures as "just queried from the ERP."
 
-## Wenn etwas ausfaellt
+## When Something Fails
 
-Bei einzelnen Kontoblockern kann die Person an einer Teamdemonstration
-teilnehmen. Nicht das Kennwort eines anderen Teilnehmers weitergeben.
-Bei gesperrtem Upload nutze Weg B. Bei fehlendem File Search ist ein
-Kontext-Paste eine klar markierte Promptuebung ohne Retrieval-Abnahme.
-Bei Portal-/Modellausfall nutze die Dokumente und Rubrik zur gemeinsamen
-Sollantwortanalyse. Das ist kein ausgefuehrter Cloud-Workshop.
+If an individual account is blocked, that person can join a team
+demonstration. Do not share another participant's password.
+Use Path B when uploads are blocked. If File Search is missing, pasting
+context is a clearly labeled prompt exercise without retrieval acceptance.
+If the portal/model is unavailable, use the documents and rubric to
+analyze expected answers together. That is not an executed cloud workshop.
+If English preparation is incomplete, stop the English path for instructor
+configuration; do not describe the unchanged German setup as English-ready.
 
-## Optionales bewusst getrennt halten
+## Keep Optional Extensions Separate
 
-Code Interpreter kann in einem verwalteten Sandboxkontext Berechnungen
-ausfuehren, hostet aber nicht automatisch die Originalanwendung. Er verursacht
-zusaetzliche Kosten und ist nicht fuer das Pflichtlernen erforderlich.
+Code Interpreter can perform calculations in a managed sandbox, but does
+not automatically host the original application. It incurs additional
+costs and is not required for the core learning objectives.
 
-Ein remote MCP-/OpenAPI-Backend koennte echte deterministische
-Geschaeftsfunktionen ergaenzen; es laeuft dann nicht allein in Foundry.
-Ein Hosted Agent koennte angepassten Anwendungscode ausfuehren, benoetigt
-aber gesonderte Bereitstellung, Berechtigungen und Protokollanpassung.
-Copilot harness und visual Workflow sind keine stillen Ersatzpfade.
-Der Workflow-Designer ist laut aktueller Dokumentation zur Einstellung
-am 01.12.2026 vorgesehen; diesen Workshop nicht darauf aufbauen.
+A remote MCP/OpenAPI backend could add actual deterministic business
+functions; it would no longer run solely in Foundry.
+A Hosted Agent could execute adapted application code, but requires
+separate deployment, permissions, and protocol adaptation.
+Copilot harness and visual Workflow are not silent replacement paths.
+According to the referenced documentation, the Workflow designer is scheduled
+for retirement on December 1, 2026; do not build this workshop on it.
 
-## Abschluss und Betrieb
+## Wrap-Up and Operations
 
-Privat Agentnamen, eigene Indizes und entstandene Kosten festhalten.
-Eigene Artefakte nur gezielt nach Cleanup-Freigabe entfernen. Keine
-bestehenden Projekte, Modellbereitstellungen oder fremden Inhalte loeschen.
-Ein Budget ist eine Warnung, kein hartes Limit. Schliessen des Browsers
-beendet keine Azure-Ressourcen.
+Privately record agent names, your indexes, and incurred costs.
+Remove only specifically identified artifacts after cleanup authorization.
+Do not delete existing projects, model deployments, or other people's content.
+A budget is an alert, not a hard limit. Closing the browser does not
+shut down Azure resources.
 
-Nach dem Event die Workshopkonten, MFA-Zuordnungen und Rolle/Projektzugriffe
-nach dem vereinbarten Lebenszyklus deaktivieren oder entfernen lassen.
-Nicht automatisch oder ausserhalb des freigegebenen Umfangs handeln.
+After the event, have workshop accounts, MFA associations, and role/project
+access disabled or removed according to the agreed lifecycle.
+Do not act automatically or outside the authorized scope.
 
-## Offizielle Quellen
+## Official Sources
 
-Alle Links wurden fuer den Materialstand 08.11.2026 herangezogen;
-Service-Rollouts und Dokumentation koennen sich weiterentwickeln.
+These links informed the materials dated November 8, 2026; this English
+edition is dated November 9, 2026. Service rollouts and documentation may
+change. Translating the materials does not constitute a new live validation.
 
-| Thema | Quelle |
+| Topic | Source |
 |---|---|
-| Prompt Agents; Portal braucht keine Installation | [Prompt-Agent-Quickstart](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-agent) |
-| Playground, Quellen und kostenpflichtige Evaluatoren | [Foundry Playgrounds](https://learn.microsoft.com/en-us/azure/foundry/concepts/concept-playgrounds) |
-| File Search, Indexierung, Basic-/Standard-Setup | [File Search](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/file-search) |
-| Foundry User und projektspezifische Rechte | [Foundry RBAC](https://learn.microsoft.com/en-us/azure/foundry/concepts/rbac-foundry) |
-| Modelle, Regionen, Quota | [Limits and regions](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/limits-quotas-regions) |
-| FunctionTool fordert Client-Ausfuehrung an | [Function Calling](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/function-calling) |
-| Code-Interpreter-Sandbox | [Code Interpreter](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/code-interpreter) |
-| Eigenen Code hosten ist ein anderer Pfad | [Hosted Agent code deployment](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent-code) |
-| Lebenszyklus visual Workflows | [Workflows](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow) |
-| Modelle, Tools und Hostingkosten | [Foundry Agent Service pricing](https://azure.microsoft.com/en-us/pricing/details/foundry-agent-service/) |
+| Prompt agents; no installation needed for the portal | [Prompt agent quickstart](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-agent) |
+| Playground, sources, and paid evaluators | [Foundry Playgrounds](https://learn.microsoft.com/en-us/azure/foundry/concepts/concept-playgrounds) |
+| File Search, indexing, basic/standard setup | [File Search](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/file-search) |
+| Foundry User and project-scoped permissions | [Foundry RBAC](https://learn.microsoft.com/en-us/azure/foundry/concepts/rbac-foundry) |
+| Models, regions, quota | [Limits and regions](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/limits-quotas-regions) |
+| FunctionTool requests client-side execution | [Function Calling](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/function-calling) |
+| Code Interpreter sandbox | [Code Interpreter](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/code-interpreter) |
+| Hosting your own code is a different path | [Hosted Agent code deployment](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent-code) |
+| Visual Workflow lifecycle | [Workflows](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow) |
+| Model, tool, and hosting costs | [Foundry Agent Service pricing](https://azure.microsoft.com/en-us/pricing/details/foundry-agent-service/) |
